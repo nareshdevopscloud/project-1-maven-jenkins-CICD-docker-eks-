@@ -1,3 +1,9 @@
+FROM tomcat:latest
+RUN cp -R  /usr/local/tomcat/webapps.dist/*  /usr/local/tomcat/webapps
+COPY /webapp/target/*.war /usr/local/tomcat/webapps
+
+
+
 # FROM ubuntu:latest as builder
 # RUN apt-get update && \
 #     apt-get install -y openjdk-8-jdk wget unzip
@@ -17,6 +23,6 @@
 # RUN mvn install
 
 
-FROM tomcat:latest
-COPY --from=builder /app/webapp/target/webapp.war /usr/local/tomcat/webapps/webapp.war
-RUN cp -R  /usr/local/tomcat/webapps.dist/*  /usr/local/tomcat/webapps
+# FROM tomcat:latest
+# COPY --from=builder /app/webapp/target/webapp.war /usr/local/tomcat/webapps/webapp.war
+# RUN cp -R  /usr/local/tomcat/webapps.dist/*  /usr/local/tomcat/webapps
